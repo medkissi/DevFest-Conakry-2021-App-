@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,11 +36,15 @@ fun SplashScreen() {
             )
 
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(bottom = 40.dp),
             contentAlignment = Alignment.BottomCenter
         ){
-            Text("Développé par IIIDAYS GROUP TECH")
+            Text(
+                text="Développé par IIIIDAYS GROUP TECH",
+                color = Color.White
+            )
         }
 
     }

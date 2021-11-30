@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,25 +35,24 @@ fun OnBoardingScreen(//onGettingStartedClick: () -> Unit, onSkipClicked: () -> U
 ) {
 
     val pagerState = rememberPagerState(pageCount = 3)
-    Column {
-        Text(
-            text = "Passer",
+    Column() {
+        TextButton(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(4.dp)
-                .clickable {// onSkipClicked()
-                     }
+                .align(Alignment.Start), onClick = {}) {
+            Text(text = "Passer")
 
-        )
+        }
+
 
 
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .weight(1f)
         ) { page ->
-            PageScreen(page = onboardPages[page] )
+            PageScreen(page = onboardPages[page])
 
 
         }
@@ -79,6 +79,7 @@ fun OnBoardingScreen(//onGettingStartedClick: () -> Unit, onSkipClicked: () -> U
 
 
             }
+            Spacer(modifier = Modifier.height(30.dp))
 
 
         }
@@ -90,7 +91,11 @@ fun OnBoardingScreen(//onGettingStartedClick: () -> Unit, onSkipClicked: () -> U
 
 @Composable
 fun PageScreen(page: Page) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
         Image(
 

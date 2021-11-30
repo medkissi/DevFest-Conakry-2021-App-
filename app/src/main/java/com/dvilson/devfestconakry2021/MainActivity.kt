@@ -1,5 +1,6 @@
 package com.dvilson.devfestconakry2021
 
+import android.content.Context
 import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,6 +17,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.lifecycleScope
 import com.dvilson.devfestconakry2021.ui.components.TabRow
 import com.dvilson.devfestconakry2021.ui.firstday.FirstDayScreen
 import com.dvilson.devfestconakry2021.ui.home.HomeScreen
@@ -24,12 +31,22 @@ import com.dvilson.devfestconakry2021.ui.theme.DevFestConakry2021Theme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "onBoarding")
+
     @ExperimentalAnimationApi
     @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val isFirstTIme= booleanPreferencesKey("fist_time")
+        lifecycleScope.launch {
+            dataStore.edit {
+
+            }
+        }
+
         setContent {
             DevFestConakry2021Theme {
 

@@ -49,7 +49,7 @@ fun SpeakerItem(speaker: Speaker,navController:NavController) {
             ) {
             Image(
                 painterResource(
-                    id = R.drawable.devfest2021_logo
+                    id = speaker.image
                 ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,

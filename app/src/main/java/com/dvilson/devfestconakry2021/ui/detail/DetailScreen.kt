@@ -60,11 +60,12 @@ fun DetailScreenContent(speaker: Speaker, navController: NavController) {
                 Image(
                     painterResource(id = speaker.image),
                     contentDescription = null,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxSize()
 
                         .height(250.dp),
-                    contentScale = ContentScale.Crop
+
 
                 )
             }

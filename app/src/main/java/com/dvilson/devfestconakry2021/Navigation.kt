@@ -23,7 +23,7 @@ fun Navigation() {
     val navController = rememberAnimatedNavController()
     val pagerState = rememberPagerState(2)
 
-    AnimatedNavHost(navController = navController, startDestination = Screen.OnBoardingScreen.route ){
+    AnimatedNavHost(navController = navController, startDestination = Screen.HomeScreen.route ){
 
         composable( route = Screen.FirstDayScreen.route ){
             FirstDayScreen(navController = navController)
