@@ -11,6 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -26,6 +28,7 @@ import com.google.accompanist.pager.PagerState
 @Composable
 fun HomeScreen(navController: NavController,pagerState: PagerState) {
 
+
    Scaffold(
 
        topBar = { TopBar()},
@@ -33,7 +36,7 @@ fun HomeScreen(navController: NavController,pagerState: PagerState) {
        content ={paddingValues->
            Column(modifier = Modifier.padding(paddingValues = paddingValues)) {
                TabRow(tabs = TabItem.items.list, pagerState = pagerState)
-               TabsContent(navController = navController, pagerState =pagerState )
+               TabsContent(tabs =TabItem.items.list, navController = navController, pagerState = pagerState)
 
            }
        }
@@ -50,6 +53,13 @@ fun TopBar() {
             )
         },
         elevation = 0.dp,
+        navigationIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.gdg_logo),
+                contentDescription =null,
+                tint = Color.Unspecified
+            )
+        }
 
     )
 

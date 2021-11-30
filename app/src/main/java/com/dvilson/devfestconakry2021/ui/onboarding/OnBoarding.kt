@@ -12,14 +12,18 @@ import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.datastore.dataStoreFile
+import androidx.navigation.NavController
 import com.dvilson.devfestconakry2021.data.Page
 import com.dvilson.devfestconakry2021.ui.theme.GoogleBlue500
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -27,20 +31,36 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import  com.dvilson.devfestconakry2021.R
+import com.dvilson.devfestconakry2021.Screen
+import com.dvilson.devfestconakry2021.data.SaveBoolean
+import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
-fun OnBoardingScreen(//onGettingStartedClick: () -> Unit, onSkipClicked: () -> Unit
+fun OnBoardingScreen(
+    navController: NavController,
 ) {
+
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val dataStore = SaveBoolean(context = context)
 
     val pagerState = rememberPagerState(pageCount = 3)
     Column() {
         TextButton(
             modifier = Modifier
                 .padding(4.dp)
-                .align(Alignment.Start), onClick = {}) {
-            Text(text = "Passer")
+                .align(Alignment.Start),
+            onClick = {
+                scope.launch {
+                    dataStore.saveIsFirsttime(true)
+                    navController.popBackStack()
+                    navController.navigate(Screen.HomeScreen.route)
+                }
+            }
+        ) {
+            Text(text = "Passer",)
 
         }
 
@@ -69,7 +89,13 @@ fun OnBoardingScreen(//onGettingStartedClick: () -> Unit, onSkipClicked: () -> U
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp),
-                onClick = {},
+                onClick = {
+                   scope.launch {
+                       dataStore.saveIsFirsttime(true)
+                       navController.popBackStack()
+                       navController.navigate(Screen.HomeScreen.route)
+                   }
+                },
                 colors = ButtonDefaults.outlinedButtonColors(
                     backgroundColor = GoogleBlue500,
                     contentColor = Color.White
@@ -124,14 +150,14 @@ fun PageScreen(page: Page) {
 val onboardPages = listOf(
 
     Page(
-        title = "Hey salut",
+        title = "DevFest 2021 ",
         description = " description",
         R.drawable.devfest2021_logo
     ),
     Page(
-        title = "Hey salut",
+        title = "GDG RATOMA",
         description = " description",
-        R.drawable.devfest2021_logo
+        R.drawable.gdg_ratoma
     ),
     Page(
         title = "Hey salut",

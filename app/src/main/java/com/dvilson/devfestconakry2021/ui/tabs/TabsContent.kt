@@ -1,5 +1,6 @@
 package com.dvilson.devfestconakry2021.ui.tabs
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.dvilson.devfestconakry2021.TabItem
@@ -10,17 +11,19 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 
+private const val TAG = "TabsContent"
+
 @ExperimentalPagerApi
 @Composable
-fun TabsContent(navController: NavController, pagerState: PagerState) {
+fun TabsContent(tabs:List<TabItem>,navController: NavController, pagerState: PagerState) {
 
 
     HorizontalPager(state = pagerState) { page ->
-        val tabs = listOf(
-            FirstDayScreen(navController = navController),
-            SecondDayScreen(navController = navController)
-        )
+        tabs[page].screen()
+
 
     }
 }
+
+
 

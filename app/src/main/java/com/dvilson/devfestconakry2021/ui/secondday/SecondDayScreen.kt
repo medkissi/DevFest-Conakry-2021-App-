@@ -15,7 +15,7 @@ import com.dvilson.devfestconakry2021.ui.components.SpeakerItem
 import com.dvilson.devfestconakry2021.ui.firstday.FirstDayScreenContent
 
 @Composable
-fun SecondDayScreen(navController: NavController) {
+fun SecondDayScreen(navController: NavController = rememberNavController()) {
     Scaffold(
         content = {
             Box(

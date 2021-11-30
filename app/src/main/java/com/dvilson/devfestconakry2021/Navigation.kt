@@ -1,6 +1,10 @@
 package com.dvilson.devfestconakry2021
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import com.dvilson.devfestconakry2021.data.Speaker
 import com.dvilson.devfestconakry2021.ui.SplashScreen
@@ -23,9 +27,18 @@ fun Navigation() {
     val navController = rememberAnimatedNavController()
     val pagerState = rememberPagerState(2)
 
-    AnimatedNavHost(navController = navController, startDestination = Screen.HomeScreen.route ){
+    AnimatedNavHost(
+        navController = navController,
+        startDestination = Screen.SplashScreen.route,
+        enterTransition = { _, _ -> EnterTransition.None},
+        exitTransition = { _, _ -> ExitTransition.None},
+        popEnterTransition = { _, _ -> EnterTransition.None},
+        popExitTransition = { _, _ -> ExitTransition.None}){
 
-        composable( route = Screen.FirstDayScreen.route ){
+        composable(
+            route = Screen.FirstDayScreen.route,
+
+            ){
             FirstDayScreen(navController = navController)
 
         }
@@ -45,10 +58,10 @@ fun Navigation() {
             HomeScreen(navController = navController,pagerState = pagerState)
         }
         composable(Screen.SplashScreen.route){
-            SplashScreen()
+            SplashScreen(navController)
         }
         composable(Screen.OnBoardingScreen.route){
-            OnBoardingScreen()
+            OnBoardingScreen(navController = navController)
         }
 
     }

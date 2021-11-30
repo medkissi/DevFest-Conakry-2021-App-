@@ -15,7 +15,7 @@ import com.dvilson.devfestconakry2021.ui.components.SpeakerItem
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 @Composable
-fun FirstDayScreen(navController: NavController) {
+fun FirstDayScreen(navController: NavController = rememberNavController()) {
     Scaffold(
         content = {
             Box(

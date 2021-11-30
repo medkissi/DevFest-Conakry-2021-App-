@@ -8,13 +8,13 @@ import com.dvilson.devfestconakry2021.ui.firstday.FirstDayScreen
 import com.dvilson.devfestconakry2021.ui.secondday.SecondDayScreen
 
 
-typealias ComposableFun = @Composable () -> Unit
+typealias ComposableFun= @Composable () -> Unit
 
 
 
-sealed class TabItem(var title: String, ) {
-    object JOUR1 : TabItem("Jour 1" )
-    object JOUR2 : TabItem("Jour 2")
+sealed class TabItem(var title: String,var screen: ComposableFun) {
+    object JOUR1 : TabItem("Jour 1" ,{ FirstDayScreen(navController = rememberNavController())})
+    object JOUR2 : TabItem("Jour 2",{SecondDayScreen(navController = rememberNavController())})
 
     object items{
         val list = listOf( JOUR1,JOUR2)

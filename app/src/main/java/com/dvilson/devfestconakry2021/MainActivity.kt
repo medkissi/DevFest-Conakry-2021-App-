@@ -31,21 +31,20 @@ import com.dvilson.devfestconakry2021.ui.theme.DevFestConakry2021Theme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "onBoarding")
+
 
     @ExperimentalAnimationApi
     @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val isFirstTIme= booleanPreferencesKey("fist_time")
-        lifecycleScope.launch {
-            dataStore.edit {
 
-            }
-        }
+
+
 
         setContent {
             DevFestConakry2021Theme {
