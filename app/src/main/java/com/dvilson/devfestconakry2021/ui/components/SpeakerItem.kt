@@ -27,7 +27,7 @@ import com.dvilson.devfestconakry2021.Screen
 fun SpeakerItem(speaker: Speaker,navController:NavController) {
     Card(
         modifier = Modifier
-            .height(120.dp)
+            .height(135.dp)
             .padding(8.dp)
             .clickable {
                 navController.currentBackStackEntry?.savedStateHandle?.set(

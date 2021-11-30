@@ -151,17 +151,18 @@ val onboardPages = listOf(
 
     Page(
         title = "DevFest 2021 ",
-        description = " description",
+        description = " Cette année, le DevFest a pour but d'aider les passionnés à trouver des opportunités pour leur vie professionnelle, de mettre les acteurs du domaine de la technologie" +
+                " et les étudiants, de fournir le maximum de ressources aux participants afin de prendre la main sur les nouvelles technologies à travers des ateliers pratiques",
         R.drawable.devfest2021_logo
     ),
     Page(
         title = "GDG RATOMA",
-        description = " description",
+        description = " Lorsque vous rejoignez le GDG Ratoma, vous avez la possibilité d'acquérir de nouvelles compétences dans une variété de formats. Vous rencontrerez également des développeurs locaux virtuellement ou en personne ayant des intérêts similaires pour la technologie. La communauté se targue d'être un environnement inclusif où tout le monde et toute personne intéressée par la technologie, des développeurs débutants aux professionnels expérimentés, sont invités à se joindre.",
         R.drawable.gdg_ratoma
     ),
     Page(
-        title = "Hey salut",
-        description = " description",
-        R.drawable.devfest2021_logo
+        title = "IIIIDAYS GROUP TECH",
+        description = " Agence de communication digitale spécialisée dans les solutions web et mobiles",
+        R.drawable.four_days_logo
     )
 )
