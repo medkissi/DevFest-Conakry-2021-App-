@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
@@ -22,24 +21,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.datastore.dataStoreFile
 import androidx.navigation.NavController
+import com.dvilson.devfestconakry2021.R
+import com.dvilson.devfestconakry2021.Screen
 import com.dvilson.devfestconakry2021.data.Page
+import com.dvilson.devfestconakry2021.data.SaveBoolean
 import com.dvilson.devfestconakry2021.ui.theme.GoogleBlue500
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import  com.dvilson.devfestconakry2021.R
-import com.dvilson.devfestconakry2021.Screen
-import com.dvilson.devfestconakry2021.data.SaveBoolean
 import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable
 fun OnBoardingScreen(
-    navController: NavController,
+    navController: NavController
 ) {
 
     val scope = rememberCoroutineScope()
@@ -47,7 +45,7 @@ fun OnBoardingScreen(
     val dataStore = SaveBoolean(context = context)
 
     val pagerState = rememberPagerState(pageCount = 3)
-    Column() {
+    Column(modifier = Modifier.background(Color.White)) {
         TextButton(
             modifier = Modifier
                 .padding(4.dp)
@@ -60,7 +58,10 @@ fun OnBoardingScreen(
                 }
             }
         ) {
-            Text(text = "Passer",)
+            Text(
+                text = "Passer",
+                color = GoogleBlue500
+            )
 
         }
 
@@ -88,13 +89,15 @@ fun OnBoardingScreen(
                 shape = RoundedCornerShape(20.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp),
+                    .padding(horizontal = 8.dp)
+                    .padding(bottom = 30.dp)
+                    .background(Color.White),
                 onClick = {
-                   scope.launch {
-                       dataStore.saveIsFirsttime(true)
-                       navController.popBackStack()
-                       navController.navigate(Screen.HomeScreen.route)
-                   }
+                    scope.launch {
+                        dataStore.saveIsFirsttime(true)
+                        navController.popBackStack()
+                        navController.navigate(Screen.HomeScreen.route)
+                    }
                 },
                 colors = ButtonDefaults.outlinedButtonColors(
                     backgroundColor = GoogleBlue500,
@@ -118,7 +121,9 @@ fun OnBoardingScreen(
 @Composable
 fun PageScreen(page: Page) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -151,18 +156,18 @@ val onboardPages = listOf(
 
     Page(
         title = "DevFest 2021 ",
-        description = " Cette année, le DevFest a pour but d'aider les passionnés à trouver des opportunités pour leur vie professionnelle, de mettre les acteurs du domaine de la technologie" +
+        description = "Cette année, le DevFest a pour but d'aider les passionnés à trouver des opportunités pour leur vie professionnelle, de mettre les acteurs du domaine de la technologie" +
                 " et les étudiants, de fournir le maximum de ressources aux participants afin de prendre la main sur les nouvelles technologies à travers des ateliers pratiques",
         R.drawable.devfest2021_logo
     ),
     Page(
         title = "GDG RATOMA",
-        description = " Lorsque vous rejoignez le GDG Ratoma, vous avez la possibilité d'acquérir de nouvelles compétences dans une variété de formats. Vous rencontrerez également des développeurs locaux virtuellement ou en personne ayant des intérêts similaires pour la technologie. La communauté se targue d'être un environnement inclusif où tout le monde et toute personne intéressée par la technologie, des développeurs débutants aux professionnels expérimentés, sont invités à se joindre.",
+        description = "Lorsque vous rejoignez le GDG Ratoma, vous avez la possibilité d'acquérir de nouvelles compétences dans une variété de formats. Vous rencontrerez également des développeurs locaux virtuellement ou en personne ayant des intérêts similaires pour la technologie. La communauté se targue d'être un environnement inclusif où tout le monde et toute personne intéressée par la technologie, des développeurs débutants aux professionnels expérimentés, sont invités à se joindre.",
         R.drawable.gdg_ratoma
     ),
     Page(
         title = "IIIIDAYS GROUP TECH",
-        description = " Agence de communication digitale spécialisée dans les solutions web et mobiles",
+        description = "Agence de communication digitale spécialisée dans les solutions web et mobiles",
         R.drawable.four_days_logo
     )
 )

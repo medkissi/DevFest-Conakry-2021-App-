@@ -1,14 +1,11 @@
 package com.dvilson.devfestconakry2021.ui.home
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,7 +33,7 @@ fun HomeScreen(navController: NavController,pagerState: PagerState) {
        content ={paddingValues->
            Column(modifier = Modifier.padding(paddingValues = paddingValues)) {
                TabRow(tabs = TabItem.items.list, pagerState = pagerState)
-               TabsContent(tabs =TabItem.items.list, navController = navController, pagerState = pagerState)
+               TabsContent( navController = navController, pagerState = pagerState)
 
            }
        }

@@ -1,10 +1,7 @@
 package com.dvilson.devfestconakry2021.ui.tabs
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import com.dvilson.devfestconakry2021.TabItem
-import com.dvilson.devfestconakry2021.ui.SplashScreen
 import com.dvilson.devfestconakry2021.ui.firstday.FirstDayScreen
 import com.dvilson.devfestconakry2021.ui.secondday.SecondDayScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -15,11 +12,14 @@ private const val TAG = "TabsContent"
 
 @ExperimentalPagerApi
 @Composable
-fun TabsContent(tabs:List<TabItem>,navController: NavController, pagerState: PagerState) {
+fun TabsContent(navController: NavController, pagerState: PagerState) {
 
 
     HorizontalPager(state = pagerState) { page ->
-        tabs[page].screen()
+        when(page){
+            0 -> FirstDayScreen(navController)
+            1 -> SecondDayScreen(navController)
+        }
 
 
     }

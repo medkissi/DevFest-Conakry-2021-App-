@@ -28,7 +28,6 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
-    val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val dataStore = SaveBoolean(context = context)
 
@@ -37,7 +36,7 @@ fun SplashScreen(navController: NavController) {
 
 
     LaunchedEffect(key1 = 1) {
-        delay(2000)
+        delay(1200)
         if (getIsFistTime.value) {
             navController.popBackStack()
             navController.navigate(Screen.HomeScreen.route)
