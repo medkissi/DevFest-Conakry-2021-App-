@@ -19,8 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.dvilson.devfestconakry2021.Screen
 import com.dvilson.devfestconakry2021.data.Repository
 import com.dvilson.devfestconakry2021.ui.components.PauseDejeune
@@ -141,4 +143,11 @@ fun FirstDayScreenContent(navController: NavController) {
         }
     }
 
+}
+@Preview()
+@Composable
+fun FisrtScreenPreview() {
+    val navController = rememberNavController()
+    FirstDayScreen(navController = navController)
+    
 }

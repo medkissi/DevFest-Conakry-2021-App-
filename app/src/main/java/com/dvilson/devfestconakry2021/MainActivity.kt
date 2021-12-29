@@ -17,7 +17,6 @@ class MainActivity : ComponentActivity() {
 
 
 
-
         setContent {
             DevFestConakry2021Theme {
 
@@ -27,8 +26,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-
 
 
 }

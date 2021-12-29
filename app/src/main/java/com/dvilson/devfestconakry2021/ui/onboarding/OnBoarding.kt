@@ -168,6 +168,6 @@ val onboardPages = listOf(
     Page(
         title = "IIIIDAYS GROUP TECH",
         description = "Agence de communication digitale spécialisée dans les solutions web et mobiles",
-        R.drawable.four_days_logo
-    )
+        R.drawable.gdg_ratoma    )
 )
+
